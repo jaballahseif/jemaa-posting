@@ -5,12 +5,10 @@ const cron = require('cron');
 require("dotenv").config();
 
 
-// Set your bot token here
 
-// Set the image URL here
 const imageUrl = 'https://cdn.discordapp.com/attachments/1065373320402452510/1083748902374748321/IMG-20230127-WA0002.jpg';
 
-// Set the cron schedule for when the image should be posted (every Friday at 9:00 AM UTC in this example)
+
 //const cronSchedule = '0 9 * * 5';
 const cronSchedule = '*/2 * * * * *';
 
