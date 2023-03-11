@@ -15,11 +15,9 @@ const cronSchedule = '*/2 * * * * *';
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
   
-  // Set up the cron job to post the image on schedule
   const job = new cron.CronJob(cronSchedule, () => {
     const channel = client.channels.cache.get('1083867489722695800');
     if (channel) {
-      // Post the image in the channel
       channel.send(imageUrl)
         .then(() => console.log('Image posted successfully'))
         .catch(console.error);
