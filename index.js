@@ -4,13 +4,6 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const cron = require('cron');
 require("dotenv").config();
 const keepAlive = require('./keep_alive.js');
-const prefix = "j!";
-client.commands = new Discord.Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-for(const file of commandFiles){
-  const command = require('./commands/${file}');
-  client.commands.set(command.name, command);
-}
 
 
 
@@ -38,19 +31,6 @@ client.on('ready', () => {
   });
 
   job.start();
-});
-/////////commands//////////////
-client.on('message', msg => {
-  if(!Message.content.startsWith(prefix) || message.author.bot) return;
-  const args = message.content.slice(prefix.length).split(/ +/);
-  const command = args.shift().toLowerCase();
-  if(command === 'play'){
-    client.commands.get('play').execute(message, args);
-  }
-  if(command === 'leave'){
-    client.commands.get('leave').execute(message, args);
-  }
-  
 });
 
 client.login(process.env.TOKEN);
