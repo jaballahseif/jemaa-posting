@@ -44,8 +44,12 @@ client.on('message', msg => {
   if(!Message.content.startsWith(prefix) || message.author.bot) return;
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
-  if(command === 'play'){}
-  if(command === 'leave'){}
+  if(command === 'play'){
+    client.commands.get('play').execute(message, args);
+  }
+  if(command === 'leave'){
+    client.commands.get('leave').execute(message, args);
+  }
   
 });
 
